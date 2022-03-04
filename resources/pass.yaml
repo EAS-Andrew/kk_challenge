@@ -1,0 +1,66 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: namespace1
+spec:
+  replicas: 1
+  template:
+    metadata:
+      annotations:
+        sidecar.istio.io/proxyCPU: 150m
+        sidecar.istio.io/proxyCPULimit: 150m
+        sidecar.istio.io/proxyMemory: 250Mi
+        sidecar.istio.io/proxyMemoryLimit: 500Mi
+    spec:
+      containers:
+      - name: cont2
+        resources:
+            limits:
+              cpu: "2"
+              memory: 1Gi
+            requests:
+              cpu: 500m
+              memory: 500Mi
+      initContainers:
+      - name: init2
+        resources:
+          limits:
+            cpu: "1"
+            memory: 1Gi
+          requests:
+            cpu: 500m
+            memory: 500Mi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: namespace2
+spec:
+  replicas: 1
+  template:
+    metadata:
+      annotations:
+        sidecar.istio.io/proxyCPU: 150m
+        sidecar.istio.io/proxyCPULimit: 150m
+        sidecar.istio.io/proxyMemory: 250Mi
+        sidecar.istio.io/proxyMemoryLimit: 500Mi
+    spec:
+      containers:
+      - name: "cont1"
+        resources:
+          limits:
+            cpu: "1"
+            memory: 1Gi
+          requests:
+            cpu: 500m
+            memory: 500Mi
+      initContainers:
+      - name: "init1"
+        resources:
+          limits:
+            cpu: "1"
+            memory: 1Gi
+          requests:
+            cpu: 500m
+            memory: 500Mi

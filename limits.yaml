@@ -1,0 +1,66 @@
+total:
+  limits:
+    cpu: 5.5
+    memory: 5120
+  requests:
+    cpu: 3
+    memory: 4096
+namespace:
+  namespace1:
+    total:
+      limits:
+        cpu: 4
+        memory: 3072
+      requests:
+        cpu: 2
+        memory: 2048
+    containers:
+      limits:
+        cpu: 2
+        memory: 2048
+      requests:
+        cpu: 1
+        memory: 1024
+    initContainers:
+      limits:
+        cpu: 2
+        memory: 2048
+      requests:
+        cpu: 1
+        memory: 1024
+    sidecars:
+      limits:
+        cpu: 0.30
+        memory: 1024
+      requests:
+        cpu: 0.25
+        memory: 512
+  namespace2:
+    total:
+      limits:
+        cpu: 4
+        memory: 3072
+      requests:
+        cpu: 2
+        memory: 2048
+    containers:
+      limits:
+        cpu: 2
+        memory: 2048
+      requests:
+        cpu: 1
+        memory: 1024
+    initContainers:
+      limits:
+        cpu: 2
+        memory: 2048
+      requests:
+        cpu: 1
+        memory: 1024
+    sidecars:
+      limits:
+        cpu: 0.30
+        memory: 1024
+      requests:
+        cpu: 0.25
+        memory: 512
